@@ -116,9 +116,6 @@ def classify_with_models(domain, log_reg, rf, xgb, scaler, target_encodings, glo
         if col in domain_df.columns:
             domain_df[col] = domain_df[col].map(target_encodings[col]).fillna(global_mean)
 
-    print("\n=== Feature Data Types ===")
-    print(domain_df.dtypes)
-
     unscaled_features = domain_df.copy() 
     scaled_features = pd.DataFrame(scaler.transform(domain_df), columns=domain_df.columns)
 
